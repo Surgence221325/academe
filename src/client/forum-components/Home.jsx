@@ -9,7 +9,6 @@ const Home = () => {
     const [content, setContent] = useState("")
     const [threadList, setThreadList] = useState([]);
 
-    //👇🏻 The useEffect Hook
     useEffect(() => {
 		const checkUser = () => {
       fetch("http://localhost:3000/api/all/threads")
@@ -41,10 +40,8 @@ const Home = () => {
     };
 
     
-    //👇🏻 Triggered when the form is submitted
     const handleSubmit = (e) => {
         e.preventDefault();
-        //👇🏻 Calls the function
         createThread();
         setThread("");
         setContent("");

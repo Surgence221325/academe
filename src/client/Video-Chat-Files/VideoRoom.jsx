@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { VideoPlayer } from "./VideoPlayer";
 
-const APP_ID= "7af9bfe27cef41979d85bd9fa0f9afba";
+const APP_ID= "c7d5d37307434a5288b89c39d5a9cdf0";
 const TOKEN= import.meta.env.VITE_AGORA_API_KEY;
 const CHANNEL= "Academe";
 
@@ -37,7 +37,7 @@ export const VideoRoom = () => {
         client.on("user-published", handleUserEntered);
         client.on("user-left", handleUserGone);
 
-        client.join(APP_ID, CHANNEL, TOKEN, null).then((uid) => 
+        client.join(APP_ID, CHANNEL, null, null).then((uid) => 
              Promise.all([AgoraRTC.createMicrophoneAndCameraTracks(), uid])
         ).then(([tracks, uid]) => {
             const [audio, video] = tracks;

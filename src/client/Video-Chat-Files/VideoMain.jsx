@@ -7,9 +7,9 @@ function VideoMain() {
   const [hasJoined, setHasJoined] = useState(false);
   return (
   <div className="VideoChat">
-    <br></br>
+    <br />
     <h1>welcome to the study hall</h1>
-    <br></br>
+    <br />
 
     {!hasJoined && (
     <button onClick={() => setHasJoined(true)}>
