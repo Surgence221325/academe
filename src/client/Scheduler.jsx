@@ -1,11 +1,12 @@
 import "./Scheduler.css";
+import axios from "axios";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -22,9 +23,32 @@ const localizer = dateFnsLocalizer({
 
 const events = [];
 
+const Notification = ({ msg }) => {
+  if (msg == "") {
+    return <></>;
+  }
+
+  return (
+    <div>
+      <h1>{notification}</h1>
+    </div>
+  );
+};
+
 function Scheduler() {
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "", creator: "" });
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    start: "",
+    end: "",
+    creator: "",
+  });
   const [allEvents, setAllEvents] = useState(events);
+  const [notification, setNotification] = useState("");
+  // clear notifications after 5 seconds
+  useEffect(() => {
+    const notifTimer = setTimeout(() => setNotification(""), 5000);
+    return () => clearTimeout(notifTimer);
+  }, [notification]);
 
   function handleAddEvent() {
     for (let i = 0; i < allEvents.length; i++) {
@@ -32,6 +56,12 @@ function Scheduler() {
       const d2 = new Date(newEvent.start);
       const d3 = new Date(allEvents[i].end);
       const d4 = new Date(newEvent.end);
+
+      setNotification("Submission added!");
+      axios
+        .post(`http://localhost:3000/api/calendar/submit`, newEvent)
+        .then((res) => {});
+
       /*
           console.log(d1 <= d2);
           console.log(d2 <= d3);
@@ -50,6 +80,7 @@ function Scheduler() {
 
   return (
     <div className="App">
+      <Notification msg={notification} />
       <h1>Calendar</h1>
       <h2>Add New Event</h2>
       <div>
