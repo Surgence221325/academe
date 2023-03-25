@@ -7,6 +7,7 @@ const Replies = () => {
 	const [title, setTitle] = useState("");
 	const navigate = useNavigate();
 	const { id } = useParams();
+	const [content, setContent] = useState("TEST TEST")
 
 	const addReply = () => {
 		fetch("http://localhost:3000/api/create/reply", {
@@ -48,6 +49,7 @@ const Replies = () => {
 				.then((data) => {
 					setReplyList(data.replies);
 					setTitle(data.title);
+					setContent(data.content)
 				})
 				.catch((err) => console.error(err));
 		};
@@ -57,6 +59,7 @@ const Replies = () => {
 	return (
         <main className='replies'>
             <h1 className='repliesTitle'>{title}</h1>
+			<p className='contentBody'>{content}</p>
     
             <form className='modal__content' onSubmit={handleSubmitReply}>
                 <label htmlFor='reply'>Reply to the thread</label>

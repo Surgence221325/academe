@@ -78,13 +78,14 @@ app.get("/api/all/threads", (req, res) => {
 
 
 app.post("/api/create/thread", async (req, res) => {
-const { thread, userId } = req.body;
+const { thread, content, userId } = req.body;
 const threadId = generateID();
 
     //👇🏻 add post details to the array
     threadList.unshift({
         id: threadId,
         title: thread,
+        content: content,
         userId,
         replies: [],
         likes: [],
@@ -127,6 +128,7 @@ app.post("/api/thread/replies", (req, res) => {
   //👇🏻 return the title and replies
   res.json({
       replies: result[0].replies,
+      content: result[0].content,
       title: result[0].title,
   });
 });
