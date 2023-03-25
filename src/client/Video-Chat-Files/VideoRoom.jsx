@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { VideoPlayer } from "./VideoPlayer";
+import { ChatBox } from "./ChatBox";
 
 const APP_ID= "7af9bfe27cef41979d85bd9fa0f9afba";
 const TOKEN= import.meta.env.VITE_AGORA_API_KEY;
-console.log(TOKEN);
 const CHANNEL= "Academe";
+
 
 const client = AgoraRTC.createClient({
     mode: "rtc",
@@ -53,7 +54,8 @@ export const VideoRoom = () => {
     }, []);
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ 
+            <ChatBox />
+            <div style={{ 
             display: "grid", 
             gridTemplateColumns: `repeat(${users.length}, 1fr)`, 
             gap: "10px"
