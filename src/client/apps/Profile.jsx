@@ -1,11 +1,11 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header'
-import Navbar from './Components/Navbar'
-import About from './Components/About'
-import Project from './Components/Project'
-import Portfolio from './Components/Portfolio'
+// import './App.css';
+import Header from '../components/Header'
+import Navbar from '../Components/Navbar'
+import About from '../Components/About'
+import Project from '../Components/Project'
+import Portfolio from '../Components/Portfolio'
 
 
 
@@ -14,8 +14,6 @@ function Profile() {
     <div className="App">
       <Header />
       <hr />
-      <Navbar />
-      <br />
       <About />
       <br />
       <hr />
