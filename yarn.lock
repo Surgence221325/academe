@@ -921,6 +921,11 @@ agora-rte-extension@^1.2.3:
   resolved "https://registry.yarnpkg.com/agora-rte-extension/-/agora-rte-extension-1.2.3.tgz#979b96df0146300296f9f37212ffa67656c698ef"
   integrity sha512-k3yNrYVyzJRoQJjaJUktKUI1XRtf8J1XsW8OzYKFqGlS8WQRMsES1+Phj2rfuEriiLObfuyuCimG6KHQCt5tiw==
 
+agora-rtm-sdk@^1.6.0-205:
+  version "1.6.0-205"
+  resolved "https://registry.yarnpkg.com/agora-rtm-sdk/-/agora-rtm-sdk-1.6.0-205.tgz#4a7b543c58f079091fc6cb124b6ec36f218407a0"
+  integrity sha512-8GqeYKQrBLin8ZgpEDY29NB6kL5mE8Kn+fslm8Du8QiHKDRWcqr1rRCNcPIysLosWP2v0WVPjAsmKqNcaED+gg==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
