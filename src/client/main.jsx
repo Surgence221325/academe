@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Scheduler from "./Scheduler"
+import App from './App'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Scheduler />
-  </React.StrictMode>
+  <Router>
+    <App />
+  </Router>
 );
