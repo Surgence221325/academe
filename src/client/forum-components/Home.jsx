@@ -6,6 +6,7 @@ import Comments from "./Comments";
 
 const Home = () => {
     const [thread, setThread] = useState("");
+    const [content, setContent] = useState("")
     const [threadList, setThreadList] = useState([]);
     const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const Home = () => {
             method: "POST",
             body: JSON.stringify({
                 thread,
+                content,
                 userId: localStorage.getItem("_id"),
             }),
             headers: {
@@ -42,6 +44,7 @@ const Home = () => {
             })
             .catch((err) => console.error(err));
     };
+
     
     //👇🏻 Triggered when the form is submitted
     const handleSubmit = (e) => {
@@ -49,6 +52,7 @@ const Home = () => {
         //👇🏻 Calls the function
         createThread();
         setThread("");
+        setContent("");
     };
 
 
@@ -59,13 +63,21 @@ const Home = () => {
                 <h2 className='homeTitle'>Create a Thread</h2>
                 <form className='homeForm' onSubmit={handleSubmit}>
                 <div className='home__container'>
-						<label htmlFor='thread'>Title / Description</label>
+						<label htmlFor='thread'>Title</label>
 						<input
 							type='text'
 							name='thread'
 							required
 							value={thread}
 							onChange={(e) => setThread(e.target.value)}
+						/>
+                        <label htmlFor='content'>Content</label>
+						<input
+							type='textarea'
+							name='content'
+							required
+							value={content}
+							onChange={(e) => setContent(e.target.value)}
 						/>
 					</div>
                     <button className='homeBtn'>CREATE THREAD</button>
