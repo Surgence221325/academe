@@ -9,6 +9,8 @@ import Home from "./forum-components/Home";
 import Replies from "./forum-components/Replies"
 import { auth, provider } from '../firebase/firebase-config.js'
 import { signInWithPopup } from 'firebase/auth'
+import googleimage from '../client/components/public/image/signinbutton.png';
+import logo from '../client/components/public/image/logo.png';
 
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
@@ -35,12 +37,11 @@ const RouterMenu = ({ user }) => {
   console.log(isLoggedIn)
 
   const navEleStyle = {
-    paddingRight: 5,
-
+    paddingRight: 5
   }
 
   return (
-    <div className='navbar'>
+    <nav className='navbar'>
       <Link style={navEleStyle} to="/">
         Home / Sign In
       </Link>
@@ -53,10 +54,10 @@ const RouterMenu = ({ user }) => {
       <Link style={navEleStyle} to="/profile">
         My Profile
       </Link>
-      <Link style={navEleStyle} to="/video">
+      <Link className='navbarRight' style={navEleStyle} to="/video">
         Study Hall
       </Link>
-    </div>
+    </nav>
   )
 }
 
@@ -96,8 +97,9 @@ const SignIn = () => {
     }
   }
   return (
-    <div>
-      <button className='googleButton' onClick={signInWithGoogle}>Sign in with Google</button>
+    <div className='layout'>
+      <h1 className='welcome'> WELCOME TO </h1> <img src={logo} className='logo'/>
+      <button className='googleButton' onClick={signInWithGoogle}> <img src={googleimage} /> </button>
     </div>
   )
 }

@@ -53,7 +53,7 @@ const Home = () => {
 
     return (
         <>
-            <Nav />
+            
             <main className='home'>
                 <h2 className='homeTitle'>Create a Thread</h2>
                 <form className='homeForm' onSubmit={handleSubmit}>

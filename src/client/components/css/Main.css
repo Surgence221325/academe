@@ -242,3 +242,28 @@ span:hover{
     
 }
 
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "welcome"
+      "logo"
+      "googleButton";
+  }
+  
+  .welcome {
+    grid-area: welcome;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .logo {
+    grid-area: logo;
+    text-align: center;
+    justify-self: center;
+  }
+  
+  .googleButton {
+    grid-area: googleButton;
+    text-align: center;
+  }
