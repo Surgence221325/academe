@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { VideoRoom } from "./VideoRoom";
 
-function VideoChat() {
+function VideoMain() {
   const [hasJoined, setHasJoined] = useState(false);
   return (
   <div className="VideoChat">
@@ -18,4 +18,4 @@ function VideoChat() {
   );
 }
 
-export default VideoChat;
+export default VideoMain;

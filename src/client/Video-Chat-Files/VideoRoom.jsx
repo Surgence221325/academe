@@ -1,29 +1,41 @@
 import { useEffect, useState } from "react";
 import AgoraRTC from 'agora-rtc-sdk-ng';
+import { VideoPlayer } from "./VideoPlayer";
 
-const APP_ID= '7af9bfe27cef41979d85bd9fa0f9afba';
-const TOKEN= '007eJxTYNh6teqo/bqVj5cHCczkeXBn69zI/XdbX3K+jP4ndm7R00PiCgzmiWmWSWmpRubJqWkmhpbmlikWpkkplmmJBmmWiWlJiaIf5VIaAhkZ8h8fYmRkgEAQn53BMTkxJTU3lYEBAAgRJRY=';
-const CHANNEL= 'Academe';
+const APP_ID= "7af9bfe27cef41979d85bd9fa0f9afba";
+const TOKEN= import.meta.env.VITE_AGORA_API_KEY;
+console.log(TOKEN);
+const CHANNEL= "Academe";
 
 const client = AgoraRTC.createClient({
     mode: "rtc",
     codec: "vp8",
-})
+});
 
 export const VideoRoom = () => {
     const[users, setUsers] = useState([]);
+    const handleUserEntered = async (user, mediaType) => {
+        await client.subscribe(user, mediaType);
     
-    // const handleUserEntered = () => {
+        if (mediaType === 'video') {
+          setUsers((previousUsers) => [...previousUsers, { 
+              uid: user.uid, 
+              video: user.videoTrack 
+          }]);
+        }
+    
+        if (mediaType === 'audio') {
+          // user.audioTrack.play()
+        }
+    };
+      
 
-    // }
 
-    // const handleUserGone = () => {
-
-    // }
+    const handleUserGone = () =>  {}
 
     useEffect(() => {
-        // client.on("user-published", handleUserEntered);
-        // client.on("user-left", handleUserGone);
+        client.on("user-published", handleUserEntered);
+        client.on("user-left", handleUserGone);
 
         client.join(APP_ID, CHANNEL, TOKEN, null).then((uid) => 
              Promise.all([AgoraRTC.createMicrophoneAndCameraTracks(), uid])
@@ -39,11 +51,17 @@ export const VideoRoom = () => {
         });
 
     }, []);
-    return <div>VideoRoom
-
-        {users.map((user) => (
-            <div key={user.uid}>{user.uid}</div>
-        ))}
-    </div>;
-    
+    return (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: `repeat(${users.length}, 1fr)`, 
+            gap: "10px"
+          }}>
+            {users.map((user) => (
+              <VideoPlayer key={user.uid} user={user} />
+            ))}
+          </div>
+        </div>
+      );
 };

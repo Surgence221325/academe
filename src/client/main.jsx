@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import VideoChat from "./Video-Chat-Files/VideoChat";
+import VideoMain from "./Video-Chat-Files/VideoMain";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <VideoChat />
+    <VideoMain />
 );
