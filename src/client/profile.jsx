@@ -19,11 +19,11 @@ function App() {
       <About />
       <br />
       <hr />
-      <h1 className="skillheader">your current enrollment</h1>
+      <h2 className="skillheader">your current enrollment</h2>
       <hr />
       <Project />
       <hr />
-      <h1 className="skillheader">the archives</h1>
+      <h2 className="skillheader">the archives</h2>
       <hr />
       <Portfolio />
 
