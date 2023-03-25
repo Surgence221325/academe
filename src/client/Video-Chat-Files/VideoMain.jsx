@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { VideoRoom } from "./VideoRoom";
+import ChatBox from "./ChatBox";
 
 function VideoMain() {
   const [hasJoined, setHasJoined] = useState(false);
@@ -14,6 +15,7 @@ function VideoMain() {
     )}
 
     {hasJoined && <VideoRoom />}
+    {hasJoined && <ChatBox />}
   </div>
   );
 }
