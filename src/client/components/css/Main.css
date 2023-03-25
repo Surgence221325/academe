@@ -1,5 +1,5 @@
 .header-h1{
-    color: rgb(255, 246, 246);
+    /* color: rgb(255, 246, 246); */
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     text-transform: lowercase;
@@ -146,15 +146,13 @@
     border-radius: 30px;
 }
 
-.flex-project-container img{
+.flex-project-container img {
     padding-top: 0px;
     margin-top: 27px;
 }
 
-.flex-project-container > div:hover
-{
-transform: scale(1.1);
-
+.flex-project-container > div:hover {
+    transform: scale(1.1);
 }
 
 .projects{
@@ -241,5 +239,3 @@ span:hover{
     
 }
 
-
-      
