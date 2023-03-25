@@ -19,7 +19,7 @@ function Profile() {
       <About />
       <br />
       <hr />
-      <h2 className="skillheader">your current enrollment</h2>
+      <h2 className="skillheader">currently enrolled</h2>
       <hr />
       <Project />
       <hr />

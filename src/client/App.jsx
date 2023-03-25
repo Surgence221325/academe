@@ -42,10 +42,7 @@ const RouterMenu = ({ user }) => {
   return (
     <div className='navbar'>
       <Link style={navEleStyle} to="/">
-        Home
-      </Link>
-      <Link style={navEleStyle} to="/login">
-        Sign In
+        Home / Sign In
       </Link>
       <Link style={navEleStyle} to="/calendar">
         Calendar
@@ -66,8 +63,7 @@ const RouterMenu = ({ user }) => {
 const RouterRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Hello />} />
-      <Route path="/login" element={<SignIn />} />
+      <Route path="/" element={<SignIn />} />
       <Route path="/calendar" element={<Scheduler />} />
       <Route path="/profile" element={<Profile />} />
       <Route path='/forum' element={<Home />} />
@@ -101,7 +97,7 @@ const SignIn = () => {
   }
   return (
     <div>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <button className='googleButton' onClick={signInWithGoogle}>Sign in with Google</button>
     </div>
   )
 }

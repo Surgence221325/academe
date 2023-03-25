@@ -1,8 +1,11 @@
+
 .header-h1{
     /* color: rgb(255, 246, 246); */
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     text-transform: lowercase;
+    margin-top: 5pt;
+    padding: 5pt;
     /* border-style: solid; */
     margin:auto;
     /* border-radius: 15px; */
