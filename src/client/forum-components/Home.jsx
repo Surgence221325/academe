@@ -1,5 +1,5 @@
+import './Forum.css'
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import Likes from "./likes";
 import Comments from "./Comments";
@@ -8,22 +8,17 @@ const Home = () => {
     const [thread, setThread] = useState("");
     const [content, setContent] = useState("")
     const [threadList, setThreadList] = useState([]);
-    const navigate = useNavigate();
 
     //👇🏻 The useEffect Hook
     useEffect(() => {
 		const checkUser = () => {
-			if (!localStorage.getItem("_id")) {
-				navigate("/");
-			} else {
-				fetch("http://localhost:3000/api/all/threads")
-					.then((res) => res.json())
-					.then((data) => setThreadList(data.threads))
-					.catch((err) => console.error(err));
-			}
+      fetch("http://localhost:3000/api/all/threads")
+        .then((res) => res.json())
+        .then((data) => setThreadList(data.threads))
+        .catch((err) => console.error(err));
 		};
 		checkUser();
-	}, [navigate]);
+	}, []);
 
     const createThread = () => {
         fetch("http://localhost:3000/api/create/thread", {

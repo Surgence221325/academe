@@ -4,6 +4,8 @@ import './components/css/Main.css'
 // import './App.css';
 import Scheduler from './apps/Scheduler'
 import Profile from './apps/Profile'
+import Home from "./forum-components/Home";
+import Replies from "./forum-components/Replies"
 import { auth, provider } from '../firebase/firebase-config.js'
 import { signInWithPopup } from 'firebase/auth'
 
@@ -67,6 +69,8 @@ const RouterRoutes = () => {
       <Route path="/login" element={<SignIn />} />
       <Route path="/calendar" element={<Scheduler />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path='/forum' element={<Home />} />
+      <Route exact path='/:id/replies' element={<Replies />} />
     </Routes>
   )
 }
@@ -87,7 +91,7 @@ const SignIn = () => {
     try {
       const res = await signInWithPopup(auth, provider)
       const user = res.user
-      cookies.set('authToken', user.getIdToken())
+      cookies.set('_id', user.getIdToken())
       navigate('/')
     } catch (err) {
       console.error(err)

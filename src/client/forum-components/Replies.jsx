@@ -1,13 +1,14 @@
 import React, {useEffect,  useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useMatch, useParams, useNavigate } from "react-router-dom";
+import './Forum.css'
 const Replies = () => {
-    const [replyList, setReplyList] = useState([]);
+  const [replyList, setReplyList] = useState([]);
 	const [reply, setReply] = useState("");
 	const [title, setTitle] = useState("");
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const [content, setContent] = useState("TEST TEST")
+  console.log(id)
 
 	const addReply = () => {
 		fetch("http://localhost:3000/api/create/reply", {
@@ -24,7 +25,7 @@ const Replies = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				alert(data.message);
-				navigate("/dashboard");
+				navigate(`/forum`);
 			})
 			.catch((err) => console.error(err));
 	};
