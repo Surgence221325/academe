@@ -4,6 +4,7 @@ import './components/css/Main.css'
 // import './App.css';
 import Scheduler from './apps/Scheduler'
 import Profile from './apps/Profile'
+import VideoMain from './Video-Chat-Files/VideoMain'
 import Home from "./forum-components/Home";
 import Replies from "./forum-components/Replies"
 import { auth, provider } from '../firebase/firebase-config.js'
@@ -71,6 +72,7 @@ const RouterRoutes = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path='/forum' element={<Home />} />
       <Route exact path='/:id/replies' element={<Replies />} />
+      <Route path='/video' element={<VideoMain />} />
     </Routes>
   )
 }
